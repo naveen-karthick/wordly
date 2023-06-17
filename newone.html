@@ -1,0 +1,27 @@
+<div class="container"></div>
+<div class="lazy-load"></div>
+
+<style>
+  .container {
+    height: 200vh;
+    background-color: aqua;
+  }
+</style>
+<script>
+  let target = document.querySelector(".lazy-load");
+
+  let options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0,
+  };
+
+  let observer = new IntersectionObserver(callback, options);
+
+  observer.observe(target);
+
+  function callback(entries) {
+    const [{ isIntersecting }] = entries;
+    console.log("observer triggered.", isIntersecting);
+  }
+</script>
